@@ -4,129 +4,131 @@
  * and open the template in the editor.
  */
 package schoolmodel;
+//import java.time.LocalTime;
+//import java.time.Duration;
 
-import java.time.Duration;
+import java.util.ArrayList;
+
 
 /**
  *
- * @author ro1 Lecture class to be a lecture that has an id, a name, sClass in
- * it, a book assigned to it and a period duration
+ * @author ro1 Lecture class to be a lecture that has an id, a name, sClass in it, a book assigned to it and a period duration
  */
-public class Lecture {
 
-    private int id;
-    private String name;
-    private SClass sC;
-    private Book book;
-    private Duration periods;
 
+public class Lecture { //each lecture has more than one Period, so to be put in an array list
+ private  int id; 
+  private String name;
+  private sClass sC; 
+   private Book book;
+    private ArrayList<Period> periods = new ArrayList<>() ;
+       
+     
     /**
      * constructor that assigns values to the attributes
-     *
      * @param id
      * @param Name
      * @param sC
      * @param book
-     * @param Period
+     * @param period
+     * 
      */
-    public Lecture(int id, String Name, SClass sC, Book book, Duration Period) {
-        this.id = id;
-        this.name = Name;
-        this.sC = sC;
-        this.book = book;
-        this.periods = Period;
+    public Lecture(int id , String Name, sClass sC, Book book, ArrayList<Period> period){
+        this.id = id; 
+        this.name = Name; 
+        this.sC =sC; 
+        this.book = book; 
+        this.periods = period;
     }
-
-    /**
-     * setters
-     *
+      public Lecture(int id , String Name, sClass sC, Book book,Period period){
+        this.id = id; 
+        this.name = Name; 
+        this.sC =sC; 
+        this.book = book; 
+        addPeriod(period);
+    }
+    
+    public void addPeriod(Period period){
+        periods.add(period);
+    }
+   /**
+    * setters
      * @param id to be the id of the lecture
-     */
-    public void setId(int id) {
-        this.id = id;
+    */
+    public void setId(int id){
+        this.id = id; 
     }
-
     /**
-     *
+     * 
      * @param Name of the lecture
      */
-    public void setName(String Name) {
-        this.name = Name;
+    public void setName(String Name){
+        this.name= Name;
     }
-
     /**
-     *
+     * 
      * @param Sc to be sClass in this lecture
      */
-    public void setsClass(SClass Sc) {
-        this.sC = Sc;
+    public void setsClass(sClass Sc){
+        this.sC= Sc;
     }
-
     /**
-     *
+     * 
      * @param book in this lecture
      */
-    public void setBook(Book book) {
-        this.book = book;
+    public void setBook(Book book){
+        this.book= book; 
     }
-
     /**
-     *
+     * 
      * @param Period of this lecture
      */
-    public void setPeriod(Duration Period) {
-        this.periods = Period;
+    public void setPeriod(ArrayList<Period> Period){
+        this.periods= Period;
     }
-
     /**
      * getters
      */
     /**
-     *
+     * 
      * @return id of the lecture
      */
-    public int getId() {
+    public int getId(){
         return id;
     }
-
     /**
-     *
+     * 
      * @return name of the lecture
      */
-    public String getName() {
+    public String getName(){
         return this.name;
     }
-
     /**
-     *
+     * 
      * @return school class in this lecture
      */
-    public SClass getsClass() {
+    public sClass getsClass(){
         return this.sC;
     }
-
     /**
-     *
+     * 
      * @return book of this lecture
      */
-    public Book getBook() {
+    public Book getBook(){
         return this.book;
-    }
-
+}
     /**
-     *
+     * 
      * @return duration of this lecture
      */
-    public Duration getPeriod() {
+    public ArrayList<Period> getPeriod(){
         return this.periods;
     }
-
     /**
-     *
+     * 
      * @return String representation of the lecture
      */
-    public String toString() {
-        return "Lecture: " + getName() + " has an id of:  " + getId() + "\n with school class:\n " + sC + " assigned with Book: \n " + book + "\n with a duration of: " + periods.toMinutes() + " minutes.";
+    public String toString(){
+        return "Lecture: " + getName() + " has an id of:  " +getId() +"\n with school class:\n "+ getsClass() +" assigned with Book: \n " + getBook() + "\n with a duration of: "+ getPeriod().toString(); 
     }
-
 }
